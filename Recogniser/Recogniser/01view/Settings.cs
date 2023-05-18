@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Recogniser._02logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Recogniser._01view
+namespace Recogniser
 {
     public partial class Settings : Form
     {

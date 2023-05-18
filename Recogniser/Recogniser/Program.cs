@@ -1,7 +1,8 @@
-namespace Recogniser._01view
+namespace Recogniser
 {
     internal static class Program
     {
+        public static Main main;
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -11,7 +12,8 @@ namespace Recogniser._01view
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Main());
+            main = new Main();
+            Application.Run(main);
         }
     }
 }

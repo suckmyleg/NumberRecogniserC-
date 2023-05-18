@@ -1,4 +1,4 @@
-﻿namespace Recogniser._01view
+﻿namespace Recogniser
 {
     partial class Settings
     {

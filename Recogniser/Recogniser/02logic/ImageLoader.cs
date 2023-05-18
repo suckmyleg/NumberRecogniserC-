@@ -6,7 +6,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Recogniser._02logic
+namespace Recogniser
 {
     internal class ImageLoader
     {
@@ -16,23 +16,23 @@ namespace Recogniser._02logic
         private int[] imageVector;
         private int[][] image;
 
-        private const Vector size;
-        private const int totalPixels;
+        private int[] size = {25, 25};
+        private const int totalPixels = 25*25;
 
-        public ImageLoader(string imagesPath, Vector size) { 
+        public ImageLoader(string imagesPath, int[] size) { 
             this.imagesPath = imagesPath;
-            this.size = size;
+            /*this.size = size;
 
-            this.totalPixels = this.size[0] * this.size[1];
+            this.totalPixels = this.size[0] * this.size[1];*/
         }
         public void loadImage(string filename) {
-            this.loadImage = false;
+            this.loadedImage = false;
             this.filename = filename;
-            this.imageVector = new int[];
+            this.imageVector = new int[2];
 
         }
-        public getImage() { }
-        public getImageVector() { }
+        public void getImage() { }
+        public void getImageVector() { }
 
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Recogniser._01view
+﻿namespace Recogniser
 {
     partial class Main
     {
@@ -29,91 +29,147 @@
         private void InitializeComponent()
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button9 = new System.Windows.Forms.Button();
+            this.btnLoad = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.imgPreview = new System.Windows.Forms.PictureBox();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.lvLog = new System.Windows.Forms.ListView();
+            this.loadImage = new System.Windows.Forms.OpenFileDialog();
+            this.pnlToDraw = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPreview)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.button2);
-            this.flowLayoutPanel1.Controls.Add(this.button3);
-            this.flowLayoutPanel1.Controls.Add(this.button4);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(384, 369);
+            this.flowLayoutPanel1.Controls.Add(this.btnLoad);
+            this.flowLayoutPanel1.Controls.Add(this.btnSave);
+            this.flowLayoutPanel1.Controls.Add(this.btnClear);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(313, 492);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(328, 39);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(501, 52);
             this.flowLayoutPanel1.TabIndex = 11;
             // 
-            // button2
+            // btnLoad
             // 
-            this.button2.Location = new System.Drawing.Point(3, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(103, 33);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Cargar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnLoad.Location = new System.Drawing.Point(3, 4);
+            this.btnLoad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(118, 44);
+            this.btnLoad.TabIndex = 2;
+            this.btnLoad.Text = "Cargar";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
-            // button3
+            // btnSave
             // 
-            this.button3.Location = new System.Drawing.Point(112, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(103, 33);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Guardar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(127, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(118, 44);
+            this.btnSave.TabIndex = 3;
+            this.btnSave.Text = "Guardar";
+            this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnClear
             // 
-            this.button4.Location = new System.Drawing.Point(221, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(103, 33);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Pantalla";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnClear.Location = new System.Drawing.Point(251, 4);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(118, 44);
+            this.btnClear.TabIndex = 4;
+            this.btnClear.Text = "Limpiar";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // pictureBox1
+            // imgPreview
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(776, 351);
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
+            this.imgPreview.Enabled = false;
+            this.imgPreview.Location = new System.Drawing.Point(14, 16);
+            this.imgPreview.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.imgPreview.Name = "imgPreview";
+            this.imgPreview.Size = new System.Drawing.Size(626, 464);
+            this.imgPreview.TabIndex = 10;
+            this.imgPreview.TabStop = false;
+            this.imgPreview.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // button9
+            // btnSettings
             // 
-            this.button9.Location = new System.Drawing.Point(728, 369);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(60, 33);
-            this.button9.TabIndex = 13;
-            this.button9.Text = "Ajustes";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.btnSettings.Location = new System.Drawing.Point(832, 492);
+            this.btnSettings.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(69, 44);
+            this.btnSettings.TabIndex = 13;
+            this.btnSettings.Text = "Ajustes";
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 415);
+            this.progressBar1.Location = new System.Drawing.Point(14, 553);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(776, 23);
+            this.progressBar1.Size = new System.Drawing.Size(887, 31);
             this.progressBar1.TabIndex = 12;
+            // 
+            // lvLog
+            // 
+            this.lvLog.FullRowSelect = true;
+            this.lvLog.Location = new System.Drawing.Point(662, 16);
+            this.lvLog.Name = "lvLog";
+            this.lvLog.Size = new System.Drawing.Size(240, 468);
+            this.lvLog.TabIndex = 14;
+            this.lvLog.UseCompatibleStateImageBehavior = false;
+            this.lvLog.View = System.Windows.Forms.View.List;
+            // 
+            // loadImage
+            // 
+            this.loadImage.FileName = "imageToLoad";
+            this.loadImage.Title = "Load img";
+            this.loadImage.FileOk += new System.ComponentModel.CancelEventHandler(this.loadImage_FileOk);
+            // 
+            // pnlToDraw
+            // 
+            this.pnlToDraw.BackColor = System.Drawing.Color.Transparent;
+            this.pnlToDraw.Location = new System.Drawing.Point(14, 16);
+            this.pnlToDraw.Name = "pnlToDraw";
+            this.pnlToDraw.Size = new System.Drawing.Size(642, 468);
+            this.pnlToDraw.TabIndex = 15;
+            this.pnlToDraw.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlToDraw_Paint);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(375, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 44);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Run";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(914, 600);
+            this.Controls.Add(this.pnlToDraw);
+            this.Controls.Add(this.lvLog);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button9);
+            this.Controls.Add(this.imgPreview);
+            this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.progressBar1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Main";
             this.Text = "Main";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPreview)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -121,11 +177,15 @@
         #endregion
 
         private FlowLayoutPanel flowLayoutPanel1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private PictureBox pictureBox1;
-        private Button button9;
+        private Button btnLoad;
+        private Button btnSave;
+        private Button btnClear;
+        private PictureBox imgPreview;
+        private Button btnSettings;
         private ProgressBar progressBar1;
+        private ListView lvLog;
+        private OpenFileDialog loadImage;
+        private Panel pnlToDraw;
+        private Button button1;
     }
 }
