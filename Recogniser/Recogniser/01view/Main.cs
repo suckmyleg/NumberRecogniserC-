@@ -1,13 +1,6 @@
-﻿using Recogniser._02logic;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.VisualBasic.Logging;
+using Recogniser._02logic.Settings;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Recogniser
 {
@@ -26,21 +19,69 @@ namespace Recogniser
             m.Show();
         }
 
+
         private void Main_Load(object sender, EventArgs e)
         {
-
-            AI ai = new AI();
-
-        }
-         
-        public void ShowLogs() {
-            lvLog.Items.Clear();
-            Logger.GetLogs().ForEach((x)=>lvLog.Items.Add(x.ToString()));
+            Modes.AddMode(new Mode("Fast", 28 * 28, 2, 10, 10, 0.1, 100, false));
+            Modes.AddMode(new Mode("Accurate", 28 * 28, 2, 15, 10, 0.01, 10000, false));
+            Modes.AddMode(new Mode("Nasa", 28 * 28, 3, 10, 10, 0.01, 100000, false));
+            Modes.AddMode(new Mode("Custom", 28 * 28, 2, 10, 10, 0.1, 100, true));
+            Modes.SetMode("Fast");
+            ShowNeuralInfo();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        public void ShowNeuralInfo()
         {
-            
+            lblModeSelected.Text = "Mode: " + Modes.SelectedMode;
+            lblTrainerCount.Text = "Trained: " + ImageRecogniser.GetTotalTrained();
+
+            lblStatus.Text = new string[] { "BAD", "No Neural", "No trained", "Training", "OK", "Thinking" }[ImageRecogniser.GetStatus()+1];
+            lblStatus.ForeColor = new Color[] { Color.Red, Color.Red, Color.Orange, Color.Gray, Color.Green, Color.Gray}[ImageRecogniser.GetStatus()+1];
+            pgbProcess.ForeColor = new Color[] { Color.Red, Color.Red, Color.Orange, Color.Gray, Color.Green, Color.Gray }[ImageRecogniser.GetStatus() + 1];
+
+        }
+
+        public void ReloadLogs() {
+            try
+            {
+                ShowLogs();
+                ShowNeuralInfo();
+                ReloadProgressBar();
+            }
+            catch { }
+        }
+
+        public void ShowLogs() {
+            if (Logger.HasRemoved())
+            {
+                lvLog.Clear();
+                Logger.GetNewLogs();
+                Logger.GetReloadedLogs();
+                Logger.GetLogs().ForEach((x) => lvLog.Items.Add(x.ToString()));
+            }
+            else{ 
+                Logger.GetNewLogs().ForEach((x) => lvLog.Items.Add(x.ToString()));
+                Logger.GetReloadedLogs().ForEach((x) => lvLog.Items[x.GetIndex()] = new(x.ToString()));
+            }
+        }
+
+        public void ReloadProgressBar() {
+            ProgressLog p;
+            int value = 0;
+            int count = 0;
+            foreach (Log l in Logger.GetLogs()) {
+                if (l.GetType() == typeof(ProgressLog)) {
+                    p = (ProgressLog)l;
+
+                    if (!p.HasFinished())
+                    {
+                        count++;
+                        value += (int)(100 * p.Status());
+                    }
+
+                }
+            }
+            pgbProcess.Value = (count==0?100:value/count);
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -50,15 +91,12 @@ namespace Recogniser
 
         private void loadImage_FileOk(object sender, CancelEventArgs e)
         {
-            //imgPreview.Load(loadImage.FileName);
-            Bitmap myBitmap = new Bitmap(loadImage.FileName);
-            g = Graphics.FromImage(myBitmap);
-        }
+            using (Bitmap myBitmap = new(loadImage.FileName))
+            {
+                g = Graphics.FromImage(myBitmap);
 
-        private void pnlToDraw_Paint(object sender, PaintEventArgs e)
-        {
-            g.FillRectangle(new SolidBrush(Color.Black), Cursor.Position.X, Cursor.Position.X + 1,
-                Cursor.Position.Y, Cursor.Position.Y + 1);
+                if (ImageRecogniser.HasNeural()) ImageRecogniser.RecogniseBitmap(myBitmap);
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -66,8 +104,16 @@ namespace Recogniser
             g.Clear(Color.White);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnRun_Click(object sender, EventArgs e)
         {
+            if (ImageRecogniser.HasNeural()) ImageRecogniser.Test();
+            else Logger.NewLine("No Neural Network created");
+        }
+
+        private void imgPreview_MouseClick(object sender, MouseEventArgs e)
+        {
+            g.FillRectangle(new SolidBrush(Color.Black), Cursor.Position.X-Program.main.Location.X, Cursor.Position.Y - Program.main.Location.Y,
+                Cursor.Position.X - Program.main.Location.X+1, Cursor.Position.Y - Program.main.Location.Y+1);
 
         }
     }

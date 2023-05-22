@@ -30,99 +30,100 @@
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnLoad = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.imgPreview = new System.Windows.Forms.PictureBox();
+            this.btnRun = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.pgbProcess = new System.Windows.Forms.ProgressBar();
             this.lvLog = new System.Windows.Forms.ListView();
             this.loadImage = new System.Windows.Forms.OpenFileDialog();
-            this.pnlToDraw = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.grpStatus = new System.Windows.Forms.GroupBox();
+            this.lblTrainerCount = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.lblModeSelected = new System.Windows.Forms.Label();
+            this.pnlFooter = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgPreview)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.grpStatus.SuspendLayout();
+            this.pnlFooter.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnLoad);
-            this.flowLayoutPanel1.Controls.Add(this.btnSave);
             this.flowLayoutPanel1.Controls.Add(this.btnClear);
-            this.flowLayoutPanel1.Controls.Add(this.button1);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(313, 492);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.flowLayoutPanel1.Controls.Add(this.btnRun);
+            this.flowLayoutPanel1.Controls.Add(this.btnSettings);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(323, 0);
+            this.flowLayoutPanel1.MaximumSize = new System.Drawing.Size(405, 43);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(501, 52);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(405, 43);
             this.flowLayoutPanel1.TabIndex = 11;
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(3, 4);
-            this.btnLoad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnLoad.Location = new System.Drawing.Point(3, 3);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(118, 44);
+            this.btnLoad.Size = new System.Drawing.Size(103, 33);
             this.btnLoad.TabIndex = 2;
             this.btnLoad.Text = "Cargar";
             this.btnLoad.UseVisualStyleBackColor = true;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(127, 4);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(118, 44);
-            this.btnSave.TabIndex = 3;
-            this.btnSave.Text = "Guardar";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(251, 4);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnClear.Location = new System.Drawing.Point(112, 3);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(118, 44);
+            this.btnClear.Size = new System.Drawing.Size(103, 33);
             this.btnClear.TabIndex = 4;
             this.btnClear.Text = "Limpiar";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // imgPreview
+            // btnRun
             // 
-            this.imgPreview.Enabled = false;
-            this.imgPreview.Location = new System.Drawing.Point(14, 16);
-            this.imgPreview.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.imgPreview.Name = "imgPreview";
-            this.imgPreview.Size = new System.Drawing.Size(626, 464);
-            this.imgPreview.TabIndex = 10;
-            this.imgPreview.TabStop = false;
-            this.imgPreview.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.btnRun.Location = new System.Drawing.Point(221, 3);
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(103, 33);
+            this.btnRun.TabIndex = 5;
+            this.btnRun.Text = "Run";
+            this.btnRun.UseVisualStyleBackColor = true;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
             // btnSettings
             // 
-            this.btnSettings.Location = new System.Drawing.Point(832, 492);
-            this.btnSettings.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSettings.Location = new System.Drawing.Point(330, 3);
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(69, 44);
+            this.btnSettings.Size = new System.Drawing.Size(60, 33);
             this.btnSettings.TabIndex = 13;
             this.btnSettings.Text = "Ajustes";
             this.btnSettings.UseVisualStyleBackColor = true;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
-            // progressBar1
+            // pgbProcess
             // 
-            this.progressBar1.Location = new System.Drawing.Point(14, 553);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(887, 31);
-            this.progressBar1.TabIndex = 12;
+            this.pgbProcess.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pgbProcess.Location = new System.Drawing.Point(5, 49);
+            this.pgbProcess.MarqueeAnimationSpeed = 10;
+            this.pgbProcess.Name = "pgbProcess";
+            this.pgbProcess.Size = new System.Drawing.Size(720, 23);
+            this.pgbProcess.Step = 20;
+            this.pgbProcess.TabIndex = 12;
             // 
             // lvLog
             // 
+            this.lvLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvLog.FullRowSelect = true;
-            this.lvLog.Location = new System.Drawing.Point(662, 16);
+            this.lvLog.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lvLog.Location = new System.Drawing.Point(5, 2);
+            this.lvLog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lvLog.Name = "lvLog";
-            this.lvLog.Size = new System.Drawing.Size(240, 468);
+            this.lvLog.ShowGroups = false;
+            this.lvLog.Size = new System.Drawing.Size(709, 369);
             this.lvLog.TabIndex = 14;
             this.lvLog.UseCompatibleStateImageBehavior = false;
             this.lvLog.View = System.Windows.Forms.View.List;
@@ -133,43 +134,87 @@
             this.loadImage.Title = "Load img";
             this.loadImage.FileOk += new System.ComponentModel.CancelEventHandler(this.loadImage_FileOk);
             // 
-            // pnlToDraw
+            // panel1
             // 
-            this.pnlToDraw.BackColor = System.Drawing.Color.Transparent;
-            this.pnlToDraw.Location = new System.Drawing.Point(14, 16);
-            this.pnlToDraw.Name = "pnlToDraw";
-            this.pnlToDraw.Size = new System.Drawing.Size(642, 468);
-            this.pnlToDraw.TabIndex = 15;
-            this.pnlToDraw.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlToDraw_Paint);
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.lvLog);
+            this.panel1.Location = new System.Drawing.Point(3, 1);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(720, 448);
+            this.panel1.TabIndex = 16;
+            this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.imgPreview_MouseClick);
             // 
-            // button1
+            // grpStatus
             // 
-            this.button1.Location = new System.Drawing.Point(375, 4);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 44);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Run";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.grpStatus.Controls.Add(this.lblTrainerCount);
+            this.grpStatus.Controls.Add(this.lblStatus);
+            this.grpStatus.Controls.Add(this.lblModeSelected);
+            this.grpStatus.Dock = System.Windows.Forms.DockStyle.Left;
+            this.grpStatus.Location = new System.Drawing.Point(0, 0);
+            this.grpStatus.MaximumSize = new System.Drawing.Size(316, 43);
+            this.grpStatus.Name = "grpStatus";
+            this.grpStatus.Size = new System.Drawing.Size(316, 43);
+            this.grpStatus.TabIndex = 17;
+            this.grpStatus.TabStop = false;
+            this.grpStatus.Text = "Status";
+            // 
+            // lblTrainerCount
+            // 
+            this.lblTrainerCount.AutoSize = true;
+            this.lblTrainerCount.Location = new System.Drawing.Point(217, 19);
+            this.lblTrainerCount.Name = "lblTrainerCount";
+            this.lblTrainerCount.Size = new System.Drawing.Size(57, 15);
+            this.lblTrainerCount.TabIndex = 18;
+            this.lblTrainerCount.Text = "Trained: 0";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.ForeColor = System.Drawing.Color.Red;
+            this.lblStatus.Location = new System.Drawing.Point(117, 19);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(62, 15);
+            this.lblStatus.TabIndex = 17;
+            this.lblStatus.Text = "No loaded";
+            // 
+            // lblModeSelected
+            // 
+            this.lblModeSelected.AutoSize = true;
+            this.lblModeSelected.Location = new System.Drawing.Point(6, 19);
+            this.lblModeSelected.Name = "lblModeSelected";
+            this.lblModeSelected.Size = new System.Drawing.Size(73, 15);
+            this.lblModeSelected.TabIndex = 16;
+            this.lblModeSelected.Text = "Mode: None";
+            // 
+            // pnlFooter
+            // 
+            this.pnlFooter.Controls.Add(this.pgbProcess);
+            this.pnlFooter.Controls.Add(this.grpStatus);
+            this.pnlFooter.Controls.Add(this.flowLayoutPanel1);
+            this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlFooter.Location = new System.Drawing.Point(0, 377);
+            this.pnlFooter.Name = "pnlFooter";
+            this.pnlFooter.Size = new System.Drawing.Size(728, 78);
+            this.pnlFooter.TabIndex = 17;
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 600);
-            this.Controls.Add(this.pnlToDraw);
-            this.Controls.Add(this.lvLog);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.imgPreview);
-            this.Controls.Add(this.btnSettings);
-            this.Controls.Add(this.progressBar1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ClientSize = new System.Drawing.Size(728, 455);
+            this.Controls.Add(this.pnlFooter);
+            this.Controls.Add(this.panel1);
+            this.MinimumSize = new System.Drawing.Size(744, 494);
             this.Name = "Main";
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.imgPreview)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.grpStatus.ResumeLayout(false);
+            this.grpStatus.PerformLayout();
+            this.pnlFooter.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -178,14 +223,17 @@
 
         private FlowLayoutPanel flowLayoutPanel1;
         private Button btnLoad;
-        private Button btnSave;
         private Button btnClear;
-        private PictureBox imgPreview;
         private Button btnSettings;
-        private ProgressBar progressBar1;
+        private ProgressBar pgbProcess;
         private ListView lvLog;
         private OpenFileDialog loadImage;
-        private Panel pnlToDraw;
-        private Button button1;
+        private Button btnRun;
+        private Panel panel1;
+        private Label lblModeSelected;
+        private GroupBox grpStatus;
+        private Label lblTrainerCount;
+        private Label lblStatus;
+        private Panel pnlFooter;
     }
 }

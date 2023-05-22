@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\juani\\Desktop\\NumberRecogniserC-\\Recogniser\\Recogniser\\Recogniser.csproj": {}
+    "C:\\Users\\juani\\source\\repos\\NumberRecogniserC-\\Recogniser\\Recogniser\\Recogniser.csproj": {}
   },
   "projects": {
-    "C:\\Users\\juani\\Desktop\\NumberRecogniserC-\\Recogniser\\Recogniser\\Recogniser.csproj": {
+    "C:\\Users\\juani\\source\\repos\\NumberRecogniserC-\\Recogniser\\Recogniser\\Recogniser.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\juani\\Desktop\\NumberRecogniserC-\\Recogniser\\Recogniser\\Recogniser.csproj",
+        "projectUniqueName": "C:\\Users\\juani\\source\\repos\\NumberRecogniserC-\\Recogniser\\Recogniser\\Recogniser.csproj",
         "projectName": "Recogniser",
-        "projectPath": "C:\\Users\\juani\\Desktop\\NumberRecogniserC-\\Recogniser\\Recogniser\\Recogniser.csproj",
+        "projectPath": "C:\\Users\\juani\\source\\repos\\NumberRecogniserC-\\Recogniser\\Recogniser\\Recogniser.csproj",
         "packagesPath": "C:\\Users\\juani\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\juani\\Desktop\\NumberRecogniserC-\\Recogniser\\Recogniser\\obj\\",
+        "outputPath": "C:\\Users\\juani\\source\\repos\\NumberRecogniserC-\\Recogniser\\Recogniser\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\juani\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -62,7 +58,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

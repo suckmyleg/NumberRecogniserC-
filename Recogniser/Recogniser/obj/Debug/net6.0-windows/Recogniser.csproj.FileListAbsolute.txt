@@ -22,8 +22,6 @@ C:\Users\juani\source\repos\NumberRecogniserC-\Recogniser\Recogniser\bin\Debug\n
 C:\Users\juani\source\repos\NumberRecogniserC-\Recogniser\Recogniser\bin\Debug\net6.0-windows\Recogniser.dll
 C:\Users\juani\source\repos\NumberRecogniserC-\Recogniser\Recogniser\bin\Debug\net6.0-windows\Recogniser.pdb
 C:\Users\juani\source\repos\NumberRecogniserC-\Recogniser\Recogniser\obj\Debug\net6.0-windows\Recogniser.csproj.AssemblyReference.cache
-C:\Users\juani\source\repos\NumberRecogniserC-\Recogniser\Recogniser\obj\Debug\net6.0-windows\Recogniser._01view.Main.resources
-C:\Users\juani\source\repos\NumberRecogniserC-\Recogniser\Recogniser\obj\Debug\net6.0-windows\Recogniser._01view.Settings.resources
 C:\Users\juani\source\repos\NumberRecogniserC-\Recogniser\Recogniser\obj\Debug\net6.0-windows\Recogniser.csproj.GenerateResource.cache
 C:\Users\juani\source\repos\NumberRecogniserC-\Recogniser\Recogniser\obj\Debug\net6.0-windows\Recogniser.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\juani\source\repos\NumberRecogniserC-\Recogniser\Recogniser\obj\Debug\net6.0-windows\Recogniser.AssemblyInfoInputs.cache
@@ -53,3 +51,6 @@ C:\Users\juani\Desktop\NumberRecogniserC-\Recogniser\Recogniser\obj\Debug\net6.0
 C:\Users\juani\Desktop\NumberRecogniserC-\Recogniser\Recogniser\obj\Debug\net6.0-windows\Recogniser.Main.resources
 C:\Users\juani\Desktop\NumberRecogniserC-\Recogniser\Recogniser\obj\Debug\net6.0-windows\Recogniser.Settings.resources
 C:\Users\juani\Desktop\NumberRecogniserC-\Recogniser\Recogniser\obj\Debug\net6.0-windows\Recogniser.Properties.Resources.resources
+C:\Users\juani\source\repos\NumberRecogniserC-\Recogniser\Recogniser\obj\Debug\net6.0-windows\Recogniser.Main.resources
+C:\Users\juani\source\repos\NumberRecogniserC-\Recogniser\Recogniser\obj\Debug\net6.0-windows\Recogniser.Settings.resources
+C:\Users\juani\source\repos\NumberRecogniserC-\Recogniser\Recogniser\obj\Debug\net6.0-windows\Recogniser.Properties.Resources.resources

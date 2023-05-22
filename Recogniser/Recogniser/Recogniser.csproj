@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Folder Include="03database\" />
+    <Folder Include="MnistDatabase\" />
   </ItemGroup>
 
   <ItemGroup>
