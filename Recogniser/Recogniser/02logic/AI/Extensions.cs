@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,8 +27,6 @@ namespace Recogniser
                 }
             }
         }
-        public static float RgbToGray(Color pixel) => 0.299f * pixel.R + 0.587f * pixel.G + 0.114f * pixel.B;
-
 
         public static void PrintMatrix(double[,] matrix)
         {

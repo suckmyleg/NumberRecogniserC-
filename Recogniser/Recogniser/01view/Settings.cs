@@ -181,5 +181,15 @@ namespace Recogniser
 
             SetEnableModeInputs((m==null||m.Editable));
         }
+
+        private void valLearningRate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkPrintMode_CheckedChanged(object sender, EventArgs e)
+        {
+            ImageRecogniser.SetPrintMode(chkPrintMode.Checked ? 0 : 1);
+        }
     }
 }

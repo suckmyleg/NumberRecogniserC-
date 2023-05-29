@@ -8,31 +8,98 @@ using System.Threading.Tasks;
 
 namespace Recogniser
 {
-    internal class ImageLoader
+    public static class ImageManager
     {
-        private string imagesPath;
-        private string filename;
-        private bool loadedImage;
-        private int[] imageVector;
-        private int[][] image;
+        public const int NUMBERSIDES = 9;
+        public static List<double> Load(string imagePath)
+        {
+            // Cargar la imagen
+            Bitmap originalImage = new Bitmap(imagePath);
 
-        private int[] size = {25, 25};
-        private const int totalPixels = 25*25;
+            // Convertir la imagen a blanco y negro sin escala de grises
+            Bitmap blackAndWhiteImage = ConvertToBlackAndWhite(originalImage);
 
-        public ImageLoader(string imagesPath, int[] size) { 
-            this.imagesPath = imagesPath;
-            /*this.size = size;
+            // Recortar la imagen en 16 cuadrados y obtener los porcentajes de negro
+            double[,] percentages = GetBlackPercentages(blackAndWhiteImage, NUMBERSIDES, NUMBERSIDES);
 
-            this.totalPixels = this.size[0] * this.size[1];*/
+            List<double> imagePercentages = new List<double>();
+
+            // Mostrar los porcentajes
+            for (int row = 0; row < NUMBERSIDES; row++)
+            {
+                for (int col = 0; col < NUMBERSIDES; col++)
+                {
+                    imagePercentages.Add(percentages[row, col]);
+                }
+            }
+
+            return imagePercentages;
         }
-        public void loadImage(string filename) {
-            this.loadedImage = false;
-            this.filename = filename;
-            this.imageVector = new int[2];
 
+        private static Bitmap ConvertToBlackAndWhite(Bitmap originalImage)
+        {
+            Bitmap blackAndWhiteImage = new Bitmap(originalImage.Width, originalImage.Height);
+
+            for (int y = 0; y < originalImage.Height; y++)
+            {
+                for (int x = 0; x < originalImage.Width; x++)
+                {
+                    Color pixelColor = originalImage.GetPixel(x, y);
+
+                    // Calcular el promedio de los componentes rojo, verde y azul del píxel
+                    int average = (pixelColor.R + pixelColor.G + pixelColor.B) / 3;
+
+                    // Definir un umbral para determinar si el píxel será blanco o negro
+                    int threshold = 128;
+
+                    // Establecer el nuevo color en blanco o negro según el umbral
+                    Color newColor = (average >= threshold) ? Color.White : Color.Black;
+
+                    // Establecer el nuevo color en la imagen en blanco y negro
+                    blackAndWhiteImage.SetPixel(x, y, newColor);
+                }
+            }
+
+            return blackAndWhiteImage;
         }
-        public void getImage() { }
-        public void getImageVector() { }
+
+        private static double[,] GetBlackPercentages(Bitmap image, int rows, int cols)
+        {
+            double[,] percentages = new double[rows, cols];
+            int cellWidth = image.Width / cols;
+            int cellHeight = image.Height / rows;
+
+            for (int row = 0; row < rows; row++)
+            {
+                for (int col = 0; col < cols; col++)
+                {
+                    int blackPixels = 0;
+                    int totalPixels = 0;
+
+                    // Contar los píxeles negros en la celda actual
+                    for (int y = row * cellHeight; y < (row + 1) * cellHeight; y++)
+                    {
+                        for (int x = col * cellWidth; x < (col + 1) * cellWidth; x++)
+                        {
+                            Color pixelColor = image.GetPixel(x, y);
+
+                            if (pixelColor.GetBrightness() < 0.5f) // Verificar el brillo del píxel
+                            {
+                                blackPixels++;
+                            }
+
+                            totalPixels++;
+                        }
+                    }
+
+                    // Calcular el porcentaje de píxeles negros en la celda actual
+                    float percentage = (float)blackPixels / totalPixels;
+                    percentages[row, col] = percentage;
+                }
+            }
+
+            return percentages;
+        }
 
     }
 }

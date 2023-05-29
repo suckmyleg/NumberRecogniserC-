@@ -86,16 +86,32 @@ namespace Recogniser
         }
 
 
+        public void LoadWeights(double[][,] weights)
+        {
+            this.LayersWeights = weights;
+        }
+
+
+        public void LoadBasis(double[][,] basis) {
+            this.LayersBasis = new double[basis.Length][];
+            for (int i = 0; i < NCompuLayers; i++)
+            {
+                this.LayersBasis[i] = new double[basis[i].GetLength(1)];
+                for (int j = 0; j < Layers[i+1]; j++)
+                {
+                    this.LayersBasis[i][j] = basis[i][0, j];
+                }            
+            }
+        }
 
 
 
 
 
 
-
-
-
-
+        public void setLearningRate(double ir) {
+            LearningRate = ir;
+        }
 
 
 
@@ -109,7 +125,15 @@ namespace Recogniser
             OutputLayers[0] = inputMatrix;
             for (int h = 0; h < NCompuLayers; h++)
             {
-                inputMatrix = Math.CalculateSigmoid(Math.MatrixSum(Math.MatrixDotProduct(inputMatrix, LayersWeights[h]), LayersBasis[h]));
+                inputMatrix = Math.CalculateSigmoid(
+                            Math.MatrixSum(
+                                Math.MatrixDotProduct(
+                                    inputMatrix, 
+                                    LayersWeights[h]
+                                ), 
+                                LayersBasis[h]
+                            )
+                        );
                 OutputLayers[h + 1] = inputMatrix;
             }
             return inputMatrix;
@@ -139,7 +163,13 @@ namespace Recogniser
             //Console.WriteLine("Adjusting weights from layer {0}-{1}", NCompuLayers, 0);
             for (int h = NCompuLayers - 1; h >= 0; h--)
             {
-                WeightsDiff = Math.MatrixDotProduct(Math.MatrixDotProduct(Math.MatrixTranspose(OutputLayers[h]), errors), LearningRate);
+                WeightsDiff = Math.MatrixDotProduct(
+                    Math.MatrixDotProduct(
+                                Math.MatrixTranspose(OutputLayers[h]),
+                                errors
+                            ), 
+                            LearningRate
+                        );
 
                 BasisDiff = new double[LayersBasis[h].GetLength(0)];
 
@@ -155,7 +185,13 @@ namespace Recogniser
                 LayersWeights[h] = Math.MatrixSubstract(LayersWeights[h], WeightsDiff);
                 LayersBasis[h] = Math.MatrixSubstract(LayersBasis[h], BasisDiff);
 
-                if (h != 0) errors = Math.MatrixProduct(Math.MatrixDotProduct(errors, Math.MatrixTranspose(LayersWeights[h])), Math.CalculateSigmoidDerivative(OutputLayers[h]));
+                if (h != 0) errors = Math.MatrixProduct(
+                        Math.MatrixDotProduct(
+                                errors, 
+                                Math.MatrixTranspose(LayersWeights[h])
+                            ), 
+                        Math.CalculateSigmoidDerivative(OutputLayers[h])
+                    );
             }
         }
     }

@@ -22,10 +22,10 @@ namespace Recogniser
 
         private void Main_Load(object sender, EventArgs e)
         {
-            Modes.AddMode(new Mode("Fast", 28 * 28, 2, 10, 10, 0.1, 100, false));
-            Modes.AddMode(new Mode("Accurate", 28 * 28, 2, 15, 10, 0.01, 10000, false));
-            Modes.AddMode(new Mode("Nasa", 28 * 28, 3, 10, 10, 0.01, 100000, false));
-            Modes.AddMode(new Mode("Custom", 28 * 28, 2, 10, 10, 0.1, 100, true));
+            Modes.AddMode(new Mode("Fast", 9*9, 2, 10, 10, 0.1, 100, false));
+            Modes.AddMode(new Mode("Accurate", 9 * 9, 2, 10, 10, 0.01, 1000, false));
+            Modes.AddMode(new Mode("Nasa", 9 * 9, 2, 10, 10, 0.001, 100000, false));
+            Modes.AddMode(new Mode("Custom", 9 * 9, 2, 10, 10, 0.1, 100, true));
             Modes.SetMode("Fast");
             ShowNeuralInfo();
         }
@@ -57,11 +57,27 @@ namespace Recogniser
                 lvLog.Clear();
                 Logger.GetNewLogs();
                 Logger.GetReloadedLogs();
-                Logger.GetLogs().ForEach((x) => lvLog.Items.Add(x.ToString()));
+                Logger.GetLogs().ForEach((x) => {
+                    lvLog.Items.Add(x.ToString());
+                    x.SetConsoleIndex(lvLog.Items.Count - 1);
+                });
             }
-            else{ 
-                Logger.GetNewLogs().ForEach((x) => lvLog.Items.Add(x.ToString()));
-                Logger.GetReloadedLogs().ForEach((x) => lvLog.Items[x.GetIndex()] = new(x.ToString()));
+            else{
+                Logger.GetNewLogs().ForEach((x) => {
+                    lvLog.Items.Add(x.ToString());
+                    x.SetConsoleIndex(lvLog.Items.Count - 1);
+                });
+
+                foreach (Log l in Logger.GetReloadedLogs())
+                {
+                    if(lvLog.Items.Count > l.GetConsoleIndex()) { 
+                        lvLog.Items[l.GetConsoleIndex()] = new(l.ToString());
+                    }
+                    else {
+                        lvLog.Items.Add(l.ToString());
+                        l.SetConsoleIndex(lvLog.Items.Count-1);
+                    }
+                }
             }
         }
 
@@ -78,7 +94,6 @@ namespace Recogniser
                         count++;
                         value += (int)(100 * p.Status());
                     }
-
                 }
             }
             pgbProcess.Value = (count==0?100:value/count);
@@ -91,23 +106,53 @@ namespace Recogniser
 
         private void loadImage_FileOk(object sender, CancelEventArgs e)
         {
-            using (Bitmap myBitmap = new(loadImage.FileName))
+            ImageRecogniser.RecogniseFile(loadImage.FileName);
+            /*
+            try
             {
-                g = Graphics.FromImage(myBitmap);
+                using (Bitmap myBitmap = new(loadImage.FileName))
+                {
+                    g = Graphics.FromImage(myBitmap);
 
-                if (ImageRecogniser.HasNeural()) ImageRecogniser.RecogniseBitmap(myBitmap);
+                    if (ImageRecogniser.HasNeural()) ImageRecogniser.RecogniseBitmap(myBitmap);
+                }
             }
+            catch {
+                Logger.NewLine("Invalid or corrupt file!");
+            }
+            */
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
             g.Clear(Color.White);
+            lvLog.Clear();
+        }
+
+        private void TrainNeural()
+        {
+            if (ImageRecogniser.HasNeural())
+            {
+                if (Modes.SelectedMode != null)
+                {
+                    int trainOutput = ImageRecogniser.Train((double)Modes.Get(Modes.SelectedMode).TrainCount);
+                    Program.main.ShowNeuralInfo();
+                }
+                else
+                {
+                    Logger.NewLine("No mode selected!");
+                }
+            }
+            else {
+                Logger.NewLine("No neural created!");
+            }
         }
 
         private void btnRun_Click(object sender, EventArgs e)
         {
-            if (ImageRecogniser.HasNeural()) ImageRecogniser.Test();
-            else Logger.NewLine("No Neural Network created");
+
+            Thread thread = new Thread(new ThreadStart(TrainNeural));
+            thread.Start();
         }
 
         private void imgPreview_MouseClick(object sender, MouseEventArgs e)
@@ -115,6 +160,33 @@ namespace Recogniser
             g.FillRectangle(new SolidBrush(Color.Black), Cursor.Position.X-Program.main.Location.X, Cursor.Position.Y - Program.main.Location.Y,
                 Cursor.Position.X - Program.main.Location.X+1, Cursor.Position.Y - Program.main.Location.Y+1);
 
+        }
+
+        private void btnSaveData_Click(object sender, EventArgs e)
+        {
+            if (ImageRecogniser.HasNeural())
+            {
+                Log l = new Log("Saving");
+
+                l.Reload(ImageRecogniser.SaveData() == 1 ? "Saved!" : "Error while saving");
+            }
+            else
+            {
+                Logger.NewLine("No neural created!");
+            }
+        }
+
+        private void btnLoadData_Click(object sender, EventArgs e)
+        {
+            if (ImageRecogniser.HasNeural())
+            {
+                Log l = new Log("Loading");
+
+                l.Reload(ImageRecogniser.LoadData() == 1 ? "Loaded!" : "Error while loading data");
+            }
+            else {
+                Logger.NewLine("No neural created!");
+            }
         }
     }
 }

@@ -29,6 +29,23 @@ namespace Recogniser
 
             return result;
         }
+        public static byte[,] MatrixTranspose(byte[,] matrix)
+        {
+            int w = matrix.GetLength(0);
+            int h = matrix.GetLength(1);
+
+            byte[,] result = new byte[h, w];
+
+            for (int i = 0; i < w; i++)
+            {
+                for (int j = 0; j < h; j++)
+                {
+                    result[j, i] = matrix[i, j];
+                }
+            }
+
+            return result;
+        }
         public static double[,] MatrixTranspose(double[] matrix)
         {
             int w = 1;
@@ -123,7 +140,6 @@ namespace Recogniser
             if (colsA != matrixb.GetLength(1))
             {
                 string l = String.Format("Matrices dimensions don't fit. {0}x{1} {2}x{3}", rowsA, colsA, matrixb.GetLength(0), matrixb.GetLength(1));
-                Logger.NewLine(l);
                 throw new Exception(l);
             }
 
@@ -188,7 +204,6 @@ namespace Recogniser
             if (colsA != rowsB)
             {
                 string l = String.Format("Matrices dimensions don't fit. {0}x{1} {2}x{3}", rowsA, colsA, matrixb.GetLength(0), matrixb.GetLength(1));
-                Logger.NewLine(l);
                 throw new Exception(l);
             }
             double[,] result = new double[rowsA, colsB];

@@ -9,16 +9,23 @@ namespace Recogniser
     public class Log
     {
         protected string content;
-        private int index;
+        private int consoleIndex;
 
         public Log(string val)
         {
             this.content = val;
-            this.index = Logger.SelfAdd(this);
+            Logger.SelfAdd(this);
         }
 
-        public void BackIndex() {
-            this.index--;
+        public int GetConsoleIndex() { return this.consoleIndex; }
+
+        public void SetConsoleIndex(int index) { 
+            this.consoleIndex = index;
+        }
+
+        public void Write(string content) {
+            this.content += content;
+            Logger.SelfReload(this);
         }
 
         public void Reload(string content) { 

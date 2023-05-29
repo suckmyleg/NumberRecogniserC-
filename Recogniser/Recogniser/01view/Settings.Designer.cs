@@ -42,7 +42,7 @@
             this.btnResetWeights = new System.Windows.Forms.Button();
             this.lblProfile = new System.Windows.Forms.Label();
             this.inpMode = new System.Windows.Forms.ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkPrintMode = new System.Windows.Forms.CheckBox();
             this.NeuralGroup = new System.Windows.Forms.GroupBox();
             this.btnApplyTrain = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
@@ -75,7 +75,7 @@
             this.groupBox1.Controls.Add(this.DataGroup);
             this.groupBox1.Controls.Add(this.lblProfile);
             this.groupBox1.Controls.Add(this.inpMode);
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.chkPrintMode);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(421, 166);
@@ -235,15 +235,18 @@
             this.inpMode.TextUpdate += new System.EventHandler(this.inpMode_TextUpdate);
             this.inpMode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.inpMode_KeyPress);
             // 
-            // checkBox1
+            // chkPrintMode
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(9, 139);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(103, 19);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Solo Imagenes";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkPrintMode.AutoSize = true;
+            this.chkPrintMode.Checked = true;
+            this.chkPrintMode.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPrintMode.Location = new System.Drawing.Point(9, 139);
+            this.chkPrintMode.Name = "chkPrintMode";
+            this.chkPrintMode.Size = new System.Drawing.Size(135, 19);
+            this.chkPrintMode.TabIndex = 0;
+            this.chkPrintMode.Text = "Show most probable";
+            this.chkPrintMode.UseVisualStyleBackColor = true;
+            this.chkPrintMode.CheckedChanged += new System.EventHandler(this.chkPrintMode_CheckedChanged);
             // 
             // NeuralGroup
             // 
@@ -314,6 +317,7 @@
             0,
             0,
             131072});
+            this.valLearningRate.ValueChanged += new System.EventHandler(this.valLearningRate_ValueChanged);
             // 
             // NeuralNetworkLayersGroup
             // 
@@ -453,7 +457,7 @@
         #endregion
 
         private GroupBox groupBox1;
-        private CheckBox checkBox1;
+        private CheckBox chkPrintMode;
         private Label lblProfile;
         private ComboBox inpMode;
         private Label lblDataWeights;

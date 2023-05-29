@@ -32,6 +32,8 @@
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnRun = new System.Windows.Forms.Button();
+            this.btnSaveData = new System.Windows.Forms.Button();
+            this.btnLoadData = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
             this.pgbProcess = new System.Windows.Forms.ProgressBar();
             this.lvLog = new System.Windows.Forms.ListView();
@@ -53,12 +55,14 @@
             this.flowLayoutPanel1.Controls.Add(this.btnLoad);
             this.flowLayoutPanel1.Controls.Add(this.btnClear);
             this.flowLayoutPanel1.Controls.Add(this.btnRun);
+            this.flowLayoutPanel1.Controls.Add(this.btnSaveData);
+            this.flowLayoutPanel1.Controls.Add(this.btnLoadData);
             this.flowLayoutPanel1.Controls.Add(this.btnSettings);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(323, 0);
-            this.flowLayoutPanel1.MaximumSize = new System.Drawing.Size(405, 43);
+            this.flowLayoutPanel1.MaximumSize = new System.Drawing.Size(529, 78);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(405, 43);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(529, 78);
             this.flowLayoutPanel1.TabIndex = 11;
             // 
             // btnLoad
@@ -67,7 +71,7 @@
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(103, 33);
             this.btnLoad.TabIndex = 2;
-            this.btnLoad.Text = "Cargar";
+            this.btnLoad.Text = "Img";
             this.btnLoad.UseVisualStyleBackColor = true;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
@@ -77,7 +81,7 @@
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(103, 33);
             this.btnClear.TabIndex = 4;
-            this.btnClear.Text = "Limpiar";
+            this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -87,13 +91,33 @@
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(103, 33);
             this.btnRun.TabIndex = 5;
-            this.btnRun.Text = "Run";
+            this.btnRun.Text = "Train";
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
+            // btnSaveData
+            // 
+            this.btnSaveData.Location = new System.Drawing.Point(330, 3);
+            this.btnSaveData.Name = "btnSaveData";
+            this.btnSaveData.Size = new System.Drawing.Size(61, 33);
+            this.btnSaveData.TabIndex = 14;
+            this.btnSaveData.Text = "Save";
+            this.btnSaveData.UseVisualStyleBackColor = true;
+            this.btnSaveData.Click += new System.EventHandler(this.btnSaveData_Click);
+            // 
+            // btnLoadData
+            // 
+            this.btnLoadData.Location = new System.Drawing.Point(397, 3);
+            this.btnLoadData.Name = "btnLoadData";
+            this.btnLoadData.Size = new System.Drawing.Size(56, 33);
+            this.btnLoadData.TabIndex = 15;
+            this.btnLoadData.Text = "Load";
+            this.btnLoadData.UseVisualStyleBackColor = true;
+            this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
+            // 
             // btnSettings
             // 
-            this.btnSettings.Location = new System.Drawing.Point(330, 3);
+            this.btnSettings.Location = new System.Drawing.Point(459, 3);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(60, 33);
             this.btnSettings.TabIndex = 13;
@@ -108,7 +132,7 @@
             this.pgbProcess.Location = new System.Drawing.Point(5, 49);
             this.pgbProcess.MarqueeAnimationSpeed = 10;
             this.pgbProcess.Name = "pgbProcess";
-            this.pgbProcess.Size = new System.Drawing.Size(720, 23);
+            this.pgbProcess.Size = new System.Drawing.Size(844, 23);
             this.pgbProcess.Step = 20;
             this.pgbProcess.TabIndex = 12;
             // 
@@ -123,7 +147,7 @@
             this.lvLog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lvLog.Name = "lvLog";
             this.lvLog.ShowGroups = false;
-            this.lvLog.Size = new System.Drawing.Size(709, 369);
+            this.lvLog.Size = new System.Drawing.Size(833, 369);
             this.lvLog.TabIndex = 14;
             this.lvLog.UseCompatibleStateImageBehavior = false;
             this.lvLog.View = System.Windows.Forms.View.List;
@@ -142,7 +166,7 @@
             this.panel1.Controls.Add(this.lvLog);
             this.panel1.Location = new System.Drawing.Point(3, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(720, 448);
+            this.panel1.Size = new System.Drawing.Size(844, 448);
             this.panel1.TabIndex = 16;
             this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.imgPreview_MouseClick);
             // 
@@ -196,17 +220,17 @@
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlFooter.Location = new System.Drawing.Point(0, 377);
             this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(728, 78);
+            this.pnlFooter.Size = new System.Drawing.Size(852, 78);
             this.pnlFooter.TabIndex = 17;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(728, 455);
+            this.ClientSize = new System.Drawing.Size(852, 455);
             this.Controls.Add(this.pnlFooter);
             this.Controls.Add(this.panel1);
-            this.MinimumSize = new System.Drawing.Size(744, 494);
+            this.MinimumSize = new System.Drawing.Size(868, 494);
             this.Name = "Main";
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
@@ -235,5 +259,7 @@
         private Label lblTrainerCount;
         private Label lblStatus;
         private Panel pnlFooter;
+        private Button btnSaveData;
+        private Button btnLoadData;
     }
 }

@@ -18,10 +18,9 @@ namespace Recogniser
         private static int lastDisplayed = -1;
 
 
-        public static int SelfAdd(Log l) {
+        public static void SelfAdd(Log l) {
             logs.Add(l);
             Program.main.ReloadLogs();
-            return logs.IndexOf(l);
         }
 
         public static void SelfRemove(Log l) {
